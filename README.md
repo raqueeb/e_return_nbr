@@ -1,3 +1,5 @@
+![NBR e-Return](images/nbr.png)
+
 # e-Return NBR — Agentic Filling Strategy (Bangladesh)
 
 An **agentic playbook** for pre-filling the Bangladesh NBR e-Return (etaxnbr.gov.bd) using [opencode](https://opencode.ai) (but anything will work) + Playwright MCP: an AI agent walks the return wizard, patches your draft against your own data files, and **stops at Save draft** — you review, pay, and submit yourself. This started as a fun Facebook [post](https://www.facebook.com/share/p/1JNZ6wwUno/), but became a reality now.
