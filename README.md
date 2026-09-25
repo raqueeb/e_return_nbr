@@ -60,7 +60,7 @@ Other portals, same pattern: another taxpayer's tax-lawyer agent, other NBR serv
 
 ## Quickstart
 
-**New to AI?** Start with the [basic guide](basic.md) first — it starts from zero.
+**New to AI?** Start with the [basic guide](basic_guide.md) first — it starts from zero.
 
 After you fork:
 
