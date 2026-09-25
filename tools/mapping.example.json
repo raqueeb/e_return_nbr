@@ -1,0 +1,22 @@
+{
+  "rules": [
+    {
+      "comment": "Excel cell -> JSON key (edit sheet/cell/key for YOUR spreadsheet)",
+      "file": "*TaxCalculation*.xlsx",
+      "cell": "13# IY 25-26!B10",
+      "key": "incomeLines.1_employment"
+    },
+    {
+      "comment": "PDF text regex -> JSON key (first capture group is the value)",
+      "file": "*statement*.pdf",
+      "regex": "Available Balance\\s+([\\d,]+)",
+      "key": "it10b_wealth.8k_i_bankBalance"
+    },
+    {
+      "comment": "Sanchayapatra interest totals",
+      "file": "*sanchay*.pdf",
+      "regex": "Total\\s+(?:Source\\s+Tax|TDS)\\s+([\\d,]+)",
+      "key": "attachments.sanchayTdsInterestTotal"
+    }
+  ]
+}

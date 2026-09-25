@@ -77,7 +77,23 @@ Concepts, slabs, and form help: see `Tax-Filing-Guide-Bangladesh.md`.
 **Merge rule:** `value = delta[key] ?? baseline[key]`  
 Exception: assessment year, income year end, and period labels always come from the **current** AY in deltas (`incomeYearEnd` / `assessmentYear`).
 
-Build both JSONs from **your** last-year submitted PDF and **your** current-year documents/worksheet before Phase 1. The agent never invents amounts.
+Build both JSONs from **your** last-year submitted PDF and **your** current-year documents/worksheet before Phase 1 — start with the document extractor (§1d) instead of typing values by hand. The agent never invents amounts.
+
+### 1d. Documents → JSON (`tools/extract.py`)
+
+Put everything you downloaded — last year's e-Return, bank statements, sanchayapatra PDFs, pension/rent papers, employer tax report, challans, car AIT, your calculation Excel — into one folder, then:
+
+```
+pip install -r tools/requirements.txt
+python tools/extract.py --docs /path/to/your-documents --out payload/staging --map tools/mapping.json
+```
+
+- Writes `payload/staging/*.json` (one per file), `inventory.md` (type + confidence per file), `for-agent.md` (files that need AI vision).
+- e-Return PDFs are parsed line-by-line into baseline keys (lines 1–26); Excel becomes a cell inventory (`Sheet!C7` → value); other PDFs keep per-page text + tables for mapping.
+- Copy `tools/mapping.example.json` → `tools/mapping.json` and edit the rules for *your* files (Excel `sheet!cell` → key, PDF regex → key).
+- Uncertain values are flagged, never guessed. The extractor only **reads** local files — it never uploads anything.
+
+Review the staging output, then assemble `payload/` baseline + deltas from §1c.
 
 ---
 
@@ -287,8 +303,15 @@ Use only values from the merged JSON — do not invent amounts.
   README.md                              # quickstart (shareable)
   LICENSE                                # MIT (shareable)
   opencode.json                          # Playwright MCP (shareable)
+  basic_guide.md                         # zero-to-start guide, EN+BN (shareable)
   NBR-eReturn-Agentic-Entry-Plan.md      # this runbook (shareable)
   Tax-Filing-Guide-Bangladesh.md         # concepts (shareable)
+  tools/
+    extract.py                           # documents → staging JSON (shareable)
+    classify.py                          # file-type fingerprints (shareable)
+    parsers/ereturn.py                   # e-Return PDF → baseline keys (shareable)
+    mapping.example.json                 # example source→key rules (shareable)
+    requirements.txt                     # python deps (shareable)
   templates/
     field-map.md                         # redacted example with real routes (shareable)
     baseline.example.json                # schema, fake values (shareable)
@@ -297,6 +320,7 @@ Use only values from the merged JSON — do not invent amounts.
     ereturn-2025-26.json                 # LY baseline (private — gitignored)
     deltas-2026-27.json                  # AY patches (private — gitignored)
     field-map.md                         # Phase 3 output (private — gitignored)
+    staging/                             # extract.py output (private — gitignored)
   screenshots/                           # Phase 4 output (private — gitignored)
   run-report.md                          # Phase 6 output (private — gitignored)
   .playwright-profile/                   # browser user-data (do not commit/share)

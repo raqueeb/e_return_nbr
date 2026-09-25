@@ -3,6 +3,7 @@ payload/
 screenshots/
 run-report.md
 Correction-Worksheet*
+tools/mapping.json
 *.pdf
 *.xlsx
 *.xls

@@ -54,6 +54,7 @@ Other portals, same pattern: another taxpayer's tax-lawyer agent, other NBR serv
 | [`Tax-Filing-Guide-Bangladesh.md`](Tax-Filing-Guide-Bangladesh.md) | Concepts guide: slabs, income heads, schedules, rebate, IT-10B/10BB, verification checklist |
 | [`NBR-eReturn-Agentic-Entry-Plan.md`](NBR-eReturn-Agentic-Entry-Plan.md) | The runbook: phases, live portal routes, fill order, verification gate, safety rails, starter prompt |
 | [`opencode.json`](opencode.json) | opencode config registering Playwright MCP |
+| [`tools/extract.py`](tools/extract.py) | **Documents → JSON**: drops your PDFs/Excel/images and converts them into staging JSON (see [basic guide](basic_guide.md)) |
 | [`templates/field-map.md`](templates/field-map.md) | Redacted example of the Phase-3 recon map (real routes, no personal figures) |
 | [`templates/baseline.example.json`](templates/baseline.example.json) | Schema for the last-year baseline data file |
 | [`templates/deltas.example.json`](templates/deltas.example.json) | Schema for current-year corrections/patches |
@@ -65,7 +66,11 @@ Other portals, same pattern: another taxpayer's tax-lawyer agent, other NBR serv
 After you fork:
 
 1. **Read** the [guide](Tax-Filing-Guide-Bangladesh.md) (concepts) then the [runbook](NBR-eReturn-Agentic-Entry-Plan.md) (execution).
-2. **Build your two data files** from *your* last-year filed PDF and *your* current-year documents — start from the JSON templates. Same keys, real values.
+2. **Build your two data files** from *your* last-year filed PDF and *your* current-year documents — don't type them by hand: run the extractor on your documents folder and start from its output:
+   ```
+   python tools/extract.py --docs /path/to/your-documents --out payload/staging
+   ```
+   Review `payload/staging/inventory.md`, map what you can with `tools/mapping.json`, then finalize the JSONs from the templates.
 3. **Configure**: copy `opencode.json` into your workspace, then
    ```
    npx @playwright/mcp install-browser chrome-for-testing

@@ -76,7 +76,18 @@ npx @playwright/mcp install-browser chrome-for-testing
 
 (Only needed once. It downloads a browser — about 200 MB.)
 
-## 5. Your first run
+## 5. Turn your documents into JSON (one command — no typing!)
+
+Don't copy numbers from PDFs by hand. Make a folder with everything you downloaded (last year's e-Return, bank statements, sanchayapatra, pension, rent, challans, your Excel), install the helpers once, and run:
+
+```
+pip install -r tools/requirements.txt
+python tools/extract.py --docs C:\your-documents --out payload/staging
+```
+
+Then open `payload/staging/inventory.md` — it tells you what was found in each file and how sure it is. The agent (or you) turns that into the two data files using `templates/` as the shape.
+
+## 6. Your first run
 
 1. In the terminal, `cd` into your folder:
    ```
@@ -90,7 +101,7 @@ npx @playwright/mcp install-browser chrome-for-testing
 4. The agent will ask you to log in to the tax portal — **you type your password yourself**, on the screen. Never tell it to the AI.
 5. The agent walks the form, checks your numbers, and **saves a draft**. It stops there.
 
-## 6. Safety — in plain words
+## 7. Safety — in plain words
 
 The agent **will** click around, type numbers, and save drafts.
 
@@ -102,7 +113,7 @@ The agent will **never**:
 
 Only **you** press *Pay* and *Submit*. Always.
 
-## 7. If something goes wrong
+## 8. If something goes wrong
 
 | Problem | Fix |
 |---|---|
@@ -111,12 +122,13 @@ Only **you** press *Pay* and *Submit*. Always.
 | Browser not found | Run step 5's command again. |
 | Portal screen looks different from the guide | Normal — portals change. Do a fresh "recon" walk (runbook Phase 3) before filling. |
 | Agent wants to click Submit/Pay | Stop it. That me job, not its. |
+| `extract.py` says module not found | Run `pip install -r tools/requirements.txt` once, then try again. |
 
-## 8. Next steps
+## 9. Next steps
 
 1. Read [`Tax-Filing-Guide-Bangladesh.md`](Tax-Filing-Guide-Bangladesh.md) — how the tax form works.
 2. Read [`NBR-eReturn-Agentic-Entry-Plan.md`](NBR-eReturn-Agentic-Entry-Plan.md) — how the agent runs.
-3. Build your two data files from `templates/` — copy the structure, put your own numbers.
+3. Run the document extractor (step 5), review `payload/staging/inventory.md`, then shape your two data files after `templates/`.
 
 ---
 
@@ -157,7 +169,6 @@ Only **you** press *Pay* and *Submit*. Always.
 ১. প্রথমে চলে যান https://nodejs.org লিংকে।  
 ২. সেখানে থাকা বড় সবুজ রঙের বাটনটা (LTS ভার্সন) ক্লিক করে ডাউনলোড করুন।  
 ৩. ফাইলটা চালু করুন → Next → Next ক্লিক করতে করতে Finish দিয়ে ইনস্টলেশন কমপ্লিট করুন।  
-
 ### ধাপ ২ — opencode ইনস্টল করুন
 
 আপনার কম্পিউটারের টার্মিনালটা ওপেন করুন (উইন্ডোজ ইউজার হলে: কিবোর্ডে `Win+R` চাপুন, `powershell` লিখে Enter চাপুন)। তারপর নিচের কোডটা কপি করে পেস্ট করুন:
@@ -189,7 +200,18 @@ npx @playwright/mcp install-browser chrome-for-testing
 
 (চিন্তার কিছু নেই, এটা জীবনে মাত্র একবারই করা লাগবে। এটা একটা ব্রাউজার ডাউনলোড করবে—সাইজ মাত্র ২০০ এমবি-র মতো।)
 
-## ৫. আপনার প্রথম রান বা এআই এজেন্ট চালানো
+## ৫. নিজের ডকুমেন্টগুলো JSON-এ রূপান্তর (এক কমান্ডে — কিছুই টাইপ করতে হবে না!)
+
+গত বছরের e-Return, ব্যাংক স্টেটমেন্ট, সঞ্চয়পত্র, পেনশন, ভাড়া, চালান, আপনার নিজের Excel — সব একটা ফোল্ডারে রাখুন। একবার হেল্পার ইনস্টল করে কমান্ড দিন:
+
+```
+pip install -r tools/requirements.txt
+python tools/extract.py --docs C:\your-documents --out payload/staging
+```
+
+এরপর `payload/staging/inventory.md` ফাইলটা খুলুন — কোন ফাইলে কী পাওয়া গেছে আর কতটা নিশ্চিত সেটা এখানে লেখা থাকবে। এরপর এজেন্ট (বা আপনি নিজে) `templates/` ফাইলগুলোর আকার ধরে দুটো ডাটা ফাইল তৈরি করবেন।
+
+## ৬. আপনার প্রথম রান বা এআই এজেন্ট চালানো
 
 ১. টার্মিনালে কমান্ড দিয়ে আপনার নির্দিষ্ট ফোল্ডারে ঢুকে যান:
    ```
@@ -203,7 +225,7 @@ npx @playwright/mcp install-browser chrome-for-testing
 ৪. এজেন্ট তখন আপনাকে এনবিআর ট্যাক্স পোর্টালে লগইন করতে বলবে—**মনে রাখবেন, পাসওয়ার্ডটা আপনার নিজের হাতেই স্ক্রিনে টাইপ করবেন**, ভুলেও কোনোদিন পাসওয়ার্ড এআই-কে দেবেন না বা টাইপ করতে বলবেন না।
 ৫. এবার এজেন্ট নিজে থেকেই ফর্মের ভেতরে ঢুকবে, আপনার দেওয়া হিসাবের সংখ্যাগুলো মেলাবে এবং কাজ শেষে পুরো ফাইলটা **ড্রাফট সেভ (Save Draft)** করে রেখে দেবে। ব্যস, এজেন্টের কাজ এখানেই শেষ!
 
-## ৬. আপনার সিকিউরিটি ও সেফটি—সোজা কথায়
+## ৭. আপনার সিকিউরিটি ও সেফটি—সোজা কথায়
 
 আমাদের তৈরি এই এজেন্ট আপনার হয়ে পোর্টালে **যা যা করবে**: সাইটে ক্লিক করে ঘুরে বেড়াবে, ডাটা ইনপুট দিয়ে সংখ্যা বসাবে এবং ড্রাফট সেভ করে রাখবে।
 
@@ -215,7 +237,7 @@ npx @playwright/mcp install-browser chrome-for-testing
 
 পেমেন্ট করার জন্য *Pay* আর জমা দেওয়ার জন্য *Submit* বাটনগুলো **শুধু আপনি নিজে চাপবেন**। সবসময় এই সিকিউরিটি রুল বজায় থাকবে।
 
-## ৭. মাঝপথে কোনো প্রবলেম হলে বা আটকে গেলে
+## ৮. মাঝপথে কোনো প্রবলেম হলে বা আটকে গেলে
 
 | সমস্যা | ঝটপট সমাধান |
 |---|---|
@@ -224,12 +246,13 @@ npx @playwright/mcp install-browser chrome-for-testing
 | ব্রাউজার খুঁজে পাওয়া যাচ্ছে না বললে | ধাপ ৫-এর ব্রাউজার ইনস্টলের কমান্ডটা আরেকবার রান করুন। |
 | পোর্টালে গিয়ে সাইটের স্ক্রিন গাইডের সাথে না মিললে | এতে নার্ভাস হওয়ার কিছু নেই, ট্যাক্স পোর্টাল মাঝে মাঝেই আপডেট হয়। ফর্ম ফিলআপ করার আগে ম্যানুয়ালি একবার ঘুরে দেখে নিন (runbook Phase 3 খেয়াল করুন)। |
 | এজেন্ট যদি হুট করে Submit বা Pay বাটনে ক্লিক করতে চায় | সাথে সাথে ওকে থামান! টাকা দেওয়া বা সাবমিট করা আপনার নিজস্ব কাজ, এজেন্টের নয়। |
+| `extract.py` চালালে module not found দেখালে | একবার pip install -r tools/requirements.txt চালান, তারপর আবার চেষ্টা করুন । |
 
-## ৮. এরপর যা করবেন
+## ৯. এরপর যা করবেন
 
 ১. [`Tax-Filing-Guide-Bangladesh.md`](Tax-Filing-Guide-Bangladesh.md) গাইডটা পড়ে নিন—ট্যাক্স ফর্মের কোন অংশে কী থাকে আর কীভাবে কাজ করে তা বোঝার জন্য।  
 ২. [`NBR-eReturn-Agentic-Entry-Plan.md`](NBR-eReturn-Agentic-Entry-Plan.md) ফাইলটা দেখুন—এজেন্ট মূলত কীভাবে ভেতরে ভেতরে কাজ প্রসেস করে তা জানতে।  
-৩. `templates/` ফোল্ডার থেকে আপনার দুটো নিজস্ব ডাটা ফাইল রেডি করে ফেলুন—টেমপ্লেটের ফাইল স্ট্রাকচার কপি করে সেখানে আপনার অরিজিনাল টাকার হিসাবগুলো বসিয়ে দিন।
+৩. ধাপ ৫-এর এক্সট্র্যাক্টর কমান্ডটা চালান, `payload/staging/inventory.md` দেখে নিন, তারপর `templates/` দেখে আপনার দুটো টাাডা ফাইল তঈরি করুন।
 
 ---
 
