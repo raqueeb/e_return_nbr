@@ -18,3 +18,4 @@ storage-state*.json
 .DS_Store
 Thumbs.db
 *.log
+__pycache__/
