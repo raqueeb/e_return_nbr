@@ -60,6 +60,8 @@ Other portals, same pattern: another taxpayer's tax-lawyer agent, other NBR serv
 
 ## Quickstart
 
+**New to AI?** Start with the [basic guide](basic.md) first — it starts from zero.
+
 After you fork:
 
 1. **Read** the [guide](Tax-Filing-Guide-Bangladesh.md) (concepts) then the [runbook](NBR-eReturn-Agentic-Entry-Plan.md) (execution).
@@ -95,10 +97,8 @@ screenshots/, run-report.md    # session outputs
 
 `.gitignore` excludes them by default.
 
-## Credits & community
+## Credits
 
-Built by [Rakibul Hassan](https://aiwithr.github.io/about/) in spare time — roughly **one month of part-time work** on top of a day job, informed by years in the AI industry and [11 Bangla books](https://aiwithr.github.io/resources/) on using AI in everyday life. Portal structure verified live against etaxnbr.gov.bd (Sep 2026) — re-verify, portals change.
+Built by [Rakibul Hassan](https://aiwithr.github.io/about/) · [11 AI books in Bangla](https://aiwithr.github.io/resources/) · Portal verified live Sep 2026 — re-verify, portals change.
 
-If this saves you a weekend: **star it, fork it, make it yours — and PR your improvements back.** That's the gift regifting.
-
-[MIT](LICENSE)
+Star it, fork it, PR improvements back. [MIT](LICENSE)
