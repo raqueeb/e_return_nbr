@@ -8,19 +8,15 @@ An **agentic playbook** for pre-filling the Bangladesh NBR e-Return (etaxnbr.gov
 
 ## Why I built this
 
-Simple story.
+Even as a high-tech professional, I realized I had low financial literacy when it came to managing my own taxes. **I wanted to change that.** I wanted to build true financial literacy, so I decided to tackle filing my own tax return on the portal myself.
 
-I had to file my own tax return. The portal is confusing. The rules are not written anywhere simple. I kept getting stuck — so I started writing things down.
+As I started working through the form, I struggled to wrap my head around the underlying logic—why certain figures needed to go in specific fields, or how the portal’s internal rules were structured. On top of that, navigating the input process itself proved quite challenging.
 
-Then I went deeper. And deeper.
+That is when I realized **I could use an AI agent to help guide me through the mechanics of the process.**
 
-In the end it took me **nearly 1 month of part-time work** — nights and weekends, between my job and family — to finally understand how this tax system really works.
+It took me **nearly 1 month of part-time work—nights and weekends, between my job and family**—to figure out how to bridge these gaps. Having spent years in the AI industry and authoring [**11 books on AI in Bangla**](https://aiwithr.github.io/resources/) to help everyday people use AI in daily life, this project naturally grew out of that same mission.
 
-And I thought: why should anyone else spend a month on this?
-
-I have been in the AI industry for a long time. I have also written **11 books on AI in Bangla** — so everyday people can use AI in everyday life. This repo comes from the same place. It is my **gift to the community**.
-
-You should not need a month to get what I already figured out. Take it. Save your time.
+> **It is my gift to the community.** You shouldn't have to spend a month trying to decipher the process — take what I built and save your time.
 
 ## What this really is
 
@@ -101,7 +97,7 @@ screenshots/, run-report.md    # session outputs
 
 ## Credits & community
 
-Built by [Rakibul Hassan](https://aiwithr.github.io/) in spare time — roughly **one month of part-time work** on top of a day job, informed by years in the AI industry and 11 Bangla books on using AI in everyday life. Portal structure verified live against etaxnbr.gov.bd (Sep 2026) — re-verify, portals change.
+Built by [Rakibul Hassan](https://aiwithr.github.io/about/) in spare time — roughly **one month of part-time work** on top of a day job, informed by years in the AI industry and [11 Bangla books](https://aiwithr.github.io/resources/) on using AI in everyday life. Portal structure verified live against etaxnbr.gov.bd (Sep 2026) — re-verify, portals change.
 
 If this saves you a weekend: **star it, fork it, make it yours — and PR your improvements back.** That's the gift regifting.
 

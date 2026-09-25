@@ -1,6 +1,6 @@
 # NBR e-Return Agentic Entry Plan (template)
 
-### [Rakibul Hassan](https://aiwithr.github.io/) with the help of OpenCode
+### [Rakibul Hassan](https://aiwithr.github.io/about/) with the help of OpenCode
 
 **Portal:** https://etaxnbr.gov.bd (+ `ledger.etaxnbr.gov.bd` via SSO)  
 **Tool:** Playwright MCP (in opencode)  

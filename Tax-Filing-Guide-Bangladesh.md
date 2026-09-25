@@ -1,6 +1,6 @@
 # Bangladesh Income Tax Filing Guide — Individuals (IT-11GA)
 
-### [Rakibul Hassan](https://aiwithr.github.io/) with the help of OpenCode
+### [Rakibul Hassan](https://aiwithr.github.io/about/) with the help of OpenCode
 
 A practical, checklist-driven guide for salaried individuals filing on **etaxnbr.gov.bd**.  
 No personal data — safe to share with friends and colleagues.

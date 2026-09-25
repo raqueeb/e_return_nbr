@@ -1,6 +1,6 @@
 # Field Map — NBR e-Return (Phase 3 recon example)
 
-### [Rakibul Hassan](https://aiwithr.github.io/) with the help of OpenCode
+### [Rakibul Hassan](https://aiwithr.github.io/about/) with the help of OpenCode
 
 **Example output** of the recon phase: real portal routes (verified live Sep 2026), **no personal figures**. Copy into your workspace as `payload/field-map.md` and fill the Value/JSON-key columns during your own read-only walk.
 
