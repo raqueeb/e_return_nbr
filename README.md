@@ -6,6 +6,43 @@ An **agentic playbook** for pre-filling the Bangladesh NBR e-Return (etaxnbr.gov
 
 > **Not tax advice.** The guide teaches form mechanics; your figures, your responsibility. Nothing in this repo ever pays or submits — safety rails are built into the runbook.
 
+## Why I built this
+
+Filing my own return on a portal whose logic is documented nowhere — schedules that cross-foot, a rebate cap that silently binds, TDS claims living in a second portal (the eReturn Ledger), IT-10B/10BB balancing identities — I quickly realized nobody hands you that understanding. You either pay for it, or you burn your nights figuring it out.
+
+So I did the second one. **Nearly one month of part-time work** — between job, family, and life — walking the wizard read-only, taking screenshots, breaking drafts, and reverse-engineering how the tax system actually computes. What started as a fun Facebook post turned into a weekend project that ate a month.
+
+I've been in the AI industry for a long time, and along the way I've **written 11 books on AI in Bangla** — because my whole thing has been helping everyday people actually *use* AI in everyday life. This repo is cut from the same cloth: a gift to the community. Nobody should have to spend a month of evenings to learn what a few well-made files can tell them in an afternoon.
+
+## What this really is
+
+Not a tax product — a **working pattern for building agents that operate government/service web portals**: how to recon a form wizard safely, keep state in JSON, verify against a read-only view, and hard-stop before irreversible actions.
+
+Concretely, it's a **tax-lawyer-agent starter** — and a blueprint for adapting the same approach to any other portal with a form wizard.
+
+## Fork it & make it yours
+
+This repo is a **template, not a finished tool**. The intended flow: fork it, swap the portal-specific parts for yours, keep the hard-won safety model.
+
+**Keep** (the transferable part):
+
+- The safety allowlist model — agent may navigate/fill/save, never pay/submit/reset
+- The phased workflow: recon → fill → verify → human handoff
+- The **baseline + deltas** JSON pattern (last-year data + this-year patches)
+- `opencode.json` + Playwright MCP setup
+- Run-report discipline: every unverified item must be listed, never silently skipped
+
+**Replace** (the portal-specific part):
+
+- `templates/baseline.example.json` / `templates/deltas.example.json` → your form's fields, your keys
+- `templates/field-map.md` → your portal's routes and sections (fill it during your own recon)
+- The domain allowlist (`etaxnbr.gov.bd`, `ledger.etaxnbr.gov.bd`) → your portal's domains
+- The starter prompt (§8 of the runbook) → your task description
+
+**Five steps:** fork → read the guide + runbook → build your two JSON files from *your* documents → recon your portal read-only → fill, verify, and hand off to a human for the irreversible parts.
+
+Other portals, same pattern: another taxpayer's tax-lawyer agent, other NBR services, passports, land records, utilities — anything that's a form wizard behind a login.
+
 ## What's inside
 
 | File | What it is |
@@ -18,6 +55,8 @@ An **agentic playbook** for pre-filling the Bangladesh NBR e-Return (etaxnbr.gov
 | [`templates/deltas.example.json`](templates/deltas.example.json) | Schema for current-year corrections/patches |
 
 ## Quickstart
+
+After you fork:
 
 1. **Read** the [guide](Tax-Filing-Guide-Bangladesh.md) (concepts) then the [runbook](NBR-eReturn-Agentic-Entry-Plan.md) (execution).
 2. **Build your two data files** from *your* last-year filed PDF and *your* current-year documents — start from the JSON templates. Same keys, real values.
@@ -52,8 +91,10 @@ screenshots/, run-report.md    # session outputs
 
 `.gitignore` excludes them by default.
 
-## Credits
+## Credits & community
 
-Built by [Rakibul Hassan](https://aiwithr.github.io/) with the help of opencode + Playwright MCP. Portal structure verified live against etaxnbr.gov.bd (Sep 2026) — re-verify, portals change.
+Built by [Rakibul Hassan](https://aiwithr.github.io/) in spare time — roughly **one month of part-time work** on top of a day job, informed by years in the AI industry and 11 Bangla books on using AI in everyday life. Portal structure verified live against etaxnbr.gov.bd (Sep 2026) — re-verify, portals change.
+
+If this saves you a weekend: **star it, fork it, make it yours — and PR your improvements back.** That's the gift regifting.
 
 [MIT](LICENSE)
