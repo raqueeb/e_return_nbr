@@ -1,0 +1,216 @@
+{
+  "meta": {
+    "source": "YOUR last-year filed e-Return PDF",
+    "assessmentYear": "2025-2026",
+    "incomeYearEnd": "30-06-2025",
+    "role": "baseline",
+    "note": "Copy from YOUR filed PDF. Numbers below are placeholders (0 / EXAMPLE) — replace all."
+  },
+  "personal": {
+    "name": "EXAMPLE TAXPAYER",
+    "nid": "0000000000000",
+    "tin": "0000000000000",
+    "fatherHusbandName": "EXAMPLE",
+    "circle": "EXAMPLE CIRCLE",
+    "taxesZone": "00, Dhaka",
+    "assessmentYearDisplay": "2025-2026",
+    "residentialStatus": "Resident",
+    "taxpayerStatus": "Individual",
+    "dateOfBirth": "01-01-1980",
+    "spouseName": "EXAMPLE",
+    "address": "EXAMPLE ADDRESS, DHAKA",
+    "telephone": "00000000000",
+    "mobile": "00000000000",
+    "email": "example@example.com",
+    "employerName": "EXAMPLE EMPLOYER LTD"
+  },
+  "incomeLines": {
+    "1_employment": 0,
+    "2_rent": 0,
+    "3_agriculture": 0,
+    "4_business": 0,
+    "5_capitalGain": 0,
+    "6_financialAssets": 0,
+    "7_otherSources": 0,
+    "8_firmAop": 0,
+    "9_minorSpouse": 0,
+    "10_abroad": 0,
+    "11_totalIncome": 0
+  },
+  "taxComputation": {
+    "12_grossTax": 0,
+    "13_rebate": 0,
+    "14_netTax": 0,
+    "15_minimumTax": 0,
+    "16_taxPayable": 0,
+    "17a_netWealthSurcharge": 0,
+    "17b_tobaccoSurcharge": 0,
+    "17c_environmentalSurcharge": 0,
+    "18_delayInterest": 0,
+    "19_totalPayable": 0
+  },
+  "taxPayments": {
+    "20_tds": 0,
+    "21_advanceTax": 0,
+    "22_refundAdjustment": 0,
+    "23_taxPaidWithReturn": 0,
+    "24_totalPaid": 0,
+    "25_excessPayment": 0,
+    "26_taxExempt": 0
+  },
+  "schedule1_employment": {
+    "part": "b - non-government",
+    "1_basicPay": 0,
+    "2_allowances": 0,
+    "3_advanceArrear": 0,
+    "4_gratuityPension": 0,
+    "7_shareScheme": 0,
+    "8_accommodation": 0,
+    "9_transport": 0,
+    "10_otherFacility": 0,
+    "11_employerRPF": 0,
+    "12_others": 0,
+    "13_totalReceived": 0,
+    "14_exempt6thSchedule": 0,
+    "15_taxableSalary": 0
+  },
+  "schedule2_rent": {
+    "property": "EXAMPLE PROPERTY, DHAKA",
+    "1_rentReceived": 0,
+    "2_advanceRent": 0,
+    "3_benefitValue": 0,
+    "4_adjustedAdvance": 0,
+    "5_vacancyAllowance": 0,
+    "6_totalRentalValue": 0,
+    "7_allowableDeduction": 0,
+    "7a_repairCollection": 0,
+    "7b_municipalTax": 0,
+    "7c_landRevenue": 0,
+    "7d_loanInterest": 0,
+    "7e_insurance": 0,
+    "7f_others": 0,
+    "8_totalAdmissible": 0,
+    "9_netIncome": 0,
+    "10_taxpayerShare": 100,
+    "11_specialRental": 0,
+    "12_totalRentalIncome": 0
+  },
+  "schedule5_investment": {
+    "1_lifeInsurance": 0,
+    "2_dps": 0,
+    "3_govtSecuritiesSanchay": 0,
+    "4_listedSecurities": 0,
+    "5_pfAct1925": 0,
+    "6_selfEmployerRPF": 0,
+    "7_superAnnuation": 0,
+    "8_benevolent": 0,
+    "9_zakat": 0,
+    "10_others": 0,
+    "11_totalInvestment": 0,
+    "12_rebateAmount": 0
+  },
+  "it10bb_lifestyle": {
+    "1_foodingClothing": 0,
+    "2_housing": 0,
+    "3_transport": 0,
+    "4_utilities": 0,
+    "5_education": 0,
+    "6_travelVacation": 0,
+    "7_festivalOther": 0,
+    "7_comments": "",
+    "8_tdsAndLastYearTax": 0,
+    "9_personalLoanInterest": 0,
+    "total": 0
+  },
+  "it10b_wealth": {
+    "asOn": "30-06-2025",
+    "1a_totalIncome": 0,
+    "1b_taxExempt": 0,
+    "1c_giftOthers": 0,
+    "1_totalSources": 0,
+    "2_previousNetWealth": 0,
+    "3_sumSourcesPrev": 0,
+    "4a_lifestyleExpense": 0,
+    "4b_otherExpense": 0,
+    "4_totalExpense": 0,
+    "5_netWealthEnd": 0,
+    "6_totalLiabilities": 0,
+    "7_grossWealth": 0,
+    "8d_nonAgriProperty": 0,
+    "8f_ii_sanchay": 0,
+    "8f_totalFinancial": 0,
+    "8g_motorVehicle": 0,
+    "8h_ornaments": 0,
+    "8i_furniture": 0,
+    "8k_i_bankBalance": 0,
+    "8k_ii_cashInHand": 0,
+    "8k_totalCashFund": 0,
+    "8_totalAssetsInside": 0,
+    "9_assetsOutside": 0,
+    "10_totalAssets": 0
+  },
+  "attachments": {
+    "sourcesOfFund": {
+      "taxableIncome": 0,
+      "exemptSalary": 0,
+      "exemptPension": 0,
+      "giftOthers": 0
+    },
+    "properties": [
+      {
+        "description": "EXAMPLE FLAT (0 Square Feet)",
+        "landArea": 0,
+        "floorArea": 0,
+        "costStart": 0,
+        "costEnd": 0
+      }
+    ],
+    "sanchayList": [
+      {
+        "scheme": "EXAMPLE SCHEME",
+        "registrationNo": "0000-0000000",
+        "issueDate": "01-01-2020",
+        "value": 0
+      }
+    ],
+    "bankAccounts": [
+      {
+        "bank": "EXAMPLE BANK PLC",
+        "branch": "EXAMPLE BRANCH",
+        "accountNo": "0000000000000",
+        "balance": 0
+      }
+    ],
+    "motorCar": {
+      "registrationNo": "DHAKA METRO-XX-00-0000",
+      "vehicleType": "Car",
+      "acquisitionType": "Purchased",
+      "engineCapacity": 0,
+      "value": 0
+    },
+    "salaryTds": {
+      "line20": 0,
+      "note": "sum of your slices per employer certificate — NOT full challan amounts",
+      "rows": []
+    },
+    "bankTds": [],
+    "sanchayTds": [],
+    "carAit": {
+      "challanNo": "",
+      "challanDate": "",
+      "registrationNo": "",
+      "transactionNo": "",
+      "transactionDate": "",
+      "claimedAmount": 0
+    },
+    "taxPaidWithReturn": {
+      "challanNo": "",
+      "date": "",
+      "taxesZone": "",
+      "circle": "",
+      "bank": "",
+      "amount": 0,
+      "status": ""
+    }
+  }
+}

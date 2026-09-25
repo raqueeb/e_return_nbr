@@ -1,0 +1,19 @@
+# --- private data (never commit) ---
+payload/
+screenshots/
+run-report.md
+Correction-Worksheet*
+*.pdf
+*.xlsx
+*.xls
+
+# --- browser/session artifacts ---
+.playwright-profile/
+.playwright-mcp/
+login.json
+storage-state*.json
+
+# --- misc ---
+.DS_Store
+Thumbs.db
+*.log

@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "source": "YOUR current-year worksheet + draft PDF",
+    "assessmentYear": "2026-2027",
+    "incomeYearEnd": "30-06-2026",
+    "mergeRule": "value = delta[key] ?? baseline[key]",
+    "doNotSubmit": "agent stops at Save draft; human pays and submits",
+    "note": "Include ONLY keys that changed vs baseline (plus current AY labels). Numbers below are placeholders."
+  },
+  "assessmentYear": {
+    "display": "2026-2027",
+    "incomeYearEnd": "30-06-2026",
+    "asOnAssets": "30-06-2026"
+  },
+  "incomeLines": {
+    "1_employment": 0,
+    "2_rent": 0,
+    "6_financialAssets": 0,
+    "11_totalIncome": 0
+  },
+  "taxComputation": {
+    "12_grossTax": 0,
+    "13_rebate": 0,
+    "13_rebateNote": "min(R% x investment, 3% x total income, 1000000) — confirm R% on portal",
+    "19_totalPayable": 0
+  },
+  "taxPayments": {
+    "20_tds": 0,
+    "21_advanceTax": 0,
+    "23_taxPaidWithReturn": 0,
+    "23_taxPaidWithReturnNote": "leave 0 until balance challan exists; enter via ledger s.173",
+    "24_totalPaid": 0,
+    "26_taxExempt": 0
+  },
+  "schedule2_rent": {
+    "7_allowableDeduction": 0,
+    "8_totalAdmissible": 0,
+    "9_netIncome": 0,
+    "12_totalRentalIncome": 0
+  },
+  "schedule5_investment": {
+    "3_govtSecuritiesSanchay": 0,
+    "5_pfAct1925": 0,
+    "6_selfEmployerRPF": 0,
+    "11_totalInvestment": 0,
+    "12_rebateAmount": 0
+  },
+  "it10bb_lifestyle": {
+    "8_tdsAndLastYearTax": 0,
+    "8_tdsAndLastYearTaxNote": "document your choice (e.g. this-year TDS + LY balance challan + car AIT)",
+    "total": 0
+  },
+  "it10b_wealth": {
+    "2_previousNetWealth": 0,
+    "2_previousNetWealthNote": "must equal baseline it10b_wealth.5_netWealthEnd exactly",
+    "4a_lifestyleExpense": 0,
+    "5_netWealthEnd": 0,
+    "7_grossWealth": 0,
+    "8k_i_bankBalance": 0,
+    "8k_ii_cashInHand": 0,
+    "10_totalAssets": 0
+  },
+  "attachments": {
+    "properties": [],
+    "sanchayList": [],
+    "sanchayListNote": "balance excluding matured/encashed instruments",
+    "bankAccounts": [],
+    "carAit": {
+      "challanNo": "",
+      "challanDate": "",
+      "registrationNo": "",
+      "transactionNo": "",
+      "transactionDate": "",
+      "claimedAmount": 0
+    },
+    "taxPaidWithReturn": {
+      "challanNo": "",
+      "amount": 0,
+      "status": "",
+      "note": "fill after balance payment via ledger s.173"
+    }
+  },
+  "openItems": [
+    "List anything the agent must not guess: share %, actual cash, pending challan ..."
+  ],
+  "resolvedItems": [
+    "Move resolved open items here with date + how they were resolved"
+  ]
+}
