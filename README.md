@@ -8,11 +8,19 @@ An **agentic playbook** for pre-filling the Bangladesh NBR e-Return (etaxnbr.gov
 
 ## Why I built this
 
-Filing my own return on a portal whose logic is documented nowhere — schedules that cross-foot, a rebate cap that silently binds, TDS claims living in a second portal (the eReturn Ledger), IT-10B/10BB balancing identities — I quickly realized nobody hands you that understanding. You either pay for it, or you burn your nights figuring it out.
+Simple story.
 
-So I did the second one. **Nearly one month of part-time work** — between job, family, and life — walking the wizard read-only, taking screenshots, breaking drafts, and reverse-engineering how the tax system actually computes. What started as a fun Facebook post turned into a weekend project that ate a month.
+I had to file my own tax return. The portal is confusing. The rules are not written anywhere simple. I kept getting stuck — so I started writing things down.
 
-I've been in the AI industry for a long time, and along the way I've **written 11 books on AI in Bangla** — because my whole thing has been helping everyday people actually *use* AI in everyday life. This repo is cut from the same cloth: a gift to the community. Nobody should have to spend a month of evenings to learn what a few well-made files can tell them in an afternoon.
+Then I went deeper. And deeper.
+
+In the end it took me **nearly 1 month of part-time work** — nights and weekends, between my job and family — to finally understand how this tax system really works.
+
+And I thought: why should anyone else spend a month on this?
+
+I have been in the AI industry for a long time. I have also written **11 books on AI in Bangla** — so everyday people can use AI in everyday life. This repo comes from the same place. It is my **gift to the community**.
+
+You should not need a month to get what I already figured out. Take it. Save your time.
 
 ## What this really is
 
