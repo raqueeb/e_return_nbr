@@ -157,18 +157,18 @@ Never leave line 23 at 0 while 19 exceeds TDS — the return won't be balanced.
 
 ## 6. Schedule 5 — Investment tax rebate (where you save the most)
 
-### Rebate formula (as applied in verified filings)
+### Rebate formula (Section 78, Income Tax Act 2023)
 
 ```
 Rebate = LEAST of:
-  (a) R% of qualifying investment     ← R has been 15% (IY 2024-25 filed) and 10% (AY 2026-27 portal)
+  (a) R% of qualifying investment     ← R = 10% for AY 2026-27 (15% in IY 2024-25 filings)
   (b) 3% of total taxable income      ← usually the binding cap for large investors
-  (c) Tk 10,00,000
+  (c) Tk 7,50,000                     ← lowered from Tk 10,00,000 by the Finance Act 2026
 ```
 
-**Practical shortcut:** once `investment ≥ (3% of income) / R%` (≈ 20% of income at R=15%, ≈ 30% at R=10%), extra investment does **not** increase the rebate — line 13 is stuck at **3% of total income**.
+**Practical shortcut:** once `investment ≥ (3% of income) / R%` (≈ 30% of income at R=10%, ≈ 20% at the old R=15%), extra investment does **not** increase the rebate — line 13 is stuck at **3% of total income**.
 
-*(Some employer certificates quote 15% / 10-lakh; the e-Return portal has also computed 10%. Always re-check line 13 after filling Schedule 5 — don’t hardcode an old rate.)*
+*(The Finance Act 2026 cut the rebate rate from 15% to 10% and the ceiling from Tk 10 lakh to Tk 7.5 lakh for AY 2026-27 — employer certificates and older blogs still quote the old numbers, and the e-Return portal computed the new 10%. Always re-check line 13 after filling Schedule 5 — don’t hardcode an old rate. Deep-dive + sources: [tax_optimize.md](tax_optimize.md).)*
 
 ### Where to put each investment (wrong serial = lost rebate)
 
@@ -187,11 +187,11 @@ Rebate = LEAST of:
 - [ ] Sanchayapatra purchases/balance in **Sl.3** (not zero if you hold any)
 - [ ] Total investment (line 11) = sum of lines 1–10
 - [ ] Rebate (line 12) matches line 13 on the main tax page
-- [ ] min(R% × investment, 3% × income, 10,00,000) ≈ rebate (confirm R% on portal this year)
+- [ ] min(R% × investment, 3% × income, 7,50,000) ≈ rebate (AY 2026-27: R=10% — confirm rate & cap on the portal yearly)
 
 **Worked example (illustrative, not personal):**  
 Total income 60,00,000 · Investment (RPF both + sanchay + DPS) = 8,00,000  
-Rebate = least(15%×8L = 1,20,000 · 3%×60L = 1,80,000 · 10,00,000) = **1,20,000**
+Rebate = least(10%×8L = 80,000 · 3%×60L = 1,80,000 · 7,50,000) = **80,000** (AY 2026-27 rates)
 
 ---
 
@@ -417,7 +417,7 @@ Salary taxable      = Total received − 6th Schedule exempt
 Rent net            = Rental value − admissible deductions
 Total income        = Σ all heads
 Gross tax           = slab computation on total income
-Rebate              = min(R% investment, 3% total income, 10,00,000)   [confirm R% yearly]
+Rebate              = min(R% investment, 3% total income, 7,50,000)   [AY 2026-27: R=10%, cap 7.5L — confirm yearly]
 Tax payable         = max(gross tax − rebate, minimum tax)
 Line 20 TDS         = salary claims + all bank TDS + sanchay TDS
 Balance due         = tax payable − (TDS + advance tax)  → pay via line 23

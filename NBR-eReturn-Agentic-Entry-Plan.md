@@ -124,6 +124,8 @@ python tools/optimize.py --baseline payload/ereturn-2025-26.json --deltas payloa
 
 Output: `payload/optimization-report.md` (bilingual EN + বাংলা). The agent must **show the report to the human and wait** — suggestions may change the deltas.
 
+Formulas, caps and research sources: [`tax_optimize.md`](tax_optimize.md) (**experimental** — researched for AY 2026-27; re-verify each year).
+
 What it computes (rules live in `tools/tax-rules.example.json`, edit yearly):
 
 1. **Slab position** — marginal rate + recomputed slab tax vs line 12 (sanity check)
@@ -328,6 +330,7 @@ Use only values from the merged JSON — do not invent amounts.
   LICENSE                                # MIT (shareable)
   opencode.json                          # Playwright MCP (shareable)
   basic_guide.md                         # zero-to-start guide, EN+BN (shareable)
+  tax_optimize.md                        # tax optimization guideline, EN+BN, experimental (shareable)
   NBR-eReturn-Agentic-Entry-Plan.md      # this runbook (shareable)
   Tax-Filing-Guide-Bangladesh.md         # concepts (shareable)
   tools/

@@ -53,6 +53,7 @@ Other portals, same pattern: another taxpayer's tax-lawyer agent, other NBR serv
 |---|---|
 | [`Tax-Filing-Guide-Bangladesh.md`](Tax-Filing-Guide-Bangladesh.md) | Concepts guide: slabs, income heads, schedules, rebate, IT-10B/10BB, verification checklist |
 | [`NBR-eReturn-Agentic-Entry-Plan.md`](NBR-eReturn-Agentic-Entry-Plan.md) | The runbook: phases, live portal routes, fill order, verification gate, safety rails, starter prompt |
+| [`tax_optimize.md`](tax_optimize.md) | **Tax optimization guideline (experimental)**: Section-78 rebate math, AY 2026-27 slabs & instrument caps, researched with sources |
 | [`opencode.json`](opencode.json) | opencode config registering Playwright MCP |
 | [`tools/extract.py`](tools/extract.py) | **Documents → JSON**: drops your PDFs/Excel/images and converts them into staging JSON (see [basic guide](basic_guide.md)) |
 | [`tools/optimize.py`](tools/optimize.py) | **Tax Optimization Engine**: pre-fill report of rebate opportunities & slab position against current rules |
@@ -72,7 +73,7 @@ After you fork:
    python tools/extract.py --docs /path/to/your-documents --out payload/staging
    ```
    Review `payload/staging/inventory.md`, map what you can with `tools/mapping.json`, then finalize the JSONs from the templates.
-3. **Optimize**: run the Tax Optimization Engine for a pre-fill opportunity report (slab position, rebate-cap verdict, Schedule-5 headroom):
+3. **Optimize**: run the Tax Optimization Engine for a pre-fill opportunity report (slab position, rebate-cap verdict, Schedule-5 headroom) — the why behind the numbers is in [tax_optimize.md](tax_optimize.md) (experimental):
    ```
    python tools/optimize.py --baseline payload/ereturn-2025-26.json --deltas payload/deltas-2026-27.json
    ```

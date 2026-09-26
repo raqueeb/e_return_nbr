@@ -1,6 +1,13 @@
 {
   "assessmentYear": "2026-2027",
-  "source": "Verify every value against the Finance Act and NBR portal each year. Slabs + rebate formula verified from a filed AY 2026-27 computation; per-instrument caps are intentionally null until you verify them.",
+  "experimental": true,
+  "source": "EXPERIMENTAL — researched for AY 2026-27 (Bangladesh Finance Act 2026, Section 78 ITA 2023) on 26-Sep-2026; see 'sources' below. Slab bands also reproduce a filed AY 2026-27 line-12 exactly. Verify every value against the current Finance Act and the e-Return portal each year before filing.",
+  "sources": [
+    { "what": "Slabs (nil 4,00,000; then 3L@10%, 4L@15%, 5L@20%, 20L@25%, rest 30%)", "ref": "Finance Act 2026 (Bangladesh) — PwC tax alert (pwc.com/bd, updated 31-Jul-2026); asiaref.dev Finance Act 2026 note; independent check: 3,75,000 nil-band variant does NOT reproduce the filed line-12", "checked": "2026-09-26" },
+    { "what": "Rebate = least of 3% x total income, 10% x eligible investment, Tk 7,50,000 (cut from 15% / 10,00,000)", "ref": "PwC 'Finance Act 2026: Key Amendments' PDF; KPMG 'Salient Features of Finance Bill 2026'; TNP Legal practitioner briefing; Section 78, Income Tax Act 2023", "checked": "2026-09-26" },
+    { "what": "Instrument caps: DPS <= 1,20,000/yr; govt securities <= 5,00,000; life insurance <= 10% of sum assured; unit/MF/ETF 5L cap removed for new investments + hold-to-maturity condition", "ref": "Income Tax Act 2023 Sixth Schedule Part 3 (taxvatpoint.com full text); Daily Star 'tax season tips' + 08-Apr-2026 rebate-opinion piece; Finance Act 2026 Part-3 amendments", "checked": "2026-09-26" },
+    { "what": "Minimum tax flat Tk 5,000 (Tk 1,000 first-time filers) from AY 2026-27 — location tiers abolished", "ref": "Finance Act 2026 salient features (studylib summary; KPMG bill notes)", "checked": "2026-09-26" }
+  ],
   "slabs": [
     { "up_to": 400000, "rate": 0.0, "label": "0 - 4,00,000" },
     { "up_to": 700000, "rate": 0.10, "label": "4,00,001 - 7,00,000" },
@@ -11,22 +18,24 @@
   ],
   "rebate": {
     "R": 0.10,
-    "R_note": "R was 15% in IY 2024-25 filings and computed as 10% on the AY 2026-27 portal — confirm on the portal and edit here.",
+    "R_note": "Finance Act 2026: R = 10% for AY 2026-27 (it was 15% before; the e-Return portal also computed 10%). Confirm on the portal each year.",
     "incomeCapPct": 0.03,
-    "absoluteCap": 1000000
+    "absoluteCap": 750000,
+    "absoluteCapNote": "Finance Act 2026 lowered the absolute cap from Tk 10,00,000 to Tk 7,50,000 for AY 2026-27. Documents quoting 10 lakh predate the amendment."
   },
   "minimumTax": 5000,
+  "minimumTaxNote": "Flat Tk 5,000 anywhere in Bangladesh from AY 2026-27 (first-time filers: Tk 1,000); the old 3,000/4,000/5,000 location tiers are abolished.",
   "schedule5": [
-    { "sl": 1, "key": "1_lifeInsurance", "instrument": "Life insurance premium", "cap": null },
-    { "sl": 2, "key": "2_dps", "instrument": "Deposit Pension Scheme (DPS)", "cap": null },
-    { "sl": 3, "key": "3_govtSecuritiesSanchay", "instrument": "Govt securities / sanchayapatra / MF / ETF", "cap": null },
-    { "sl": 4, "key": "4_listedSecurities", "instrument": "Listed shares / mutual funds", "cap": null },
-    { "sl": 5, "key": "5_pfAct1925", "instrument": "PF under PF Act 1925", "cap": null },
-    { "sl": 6, "key": "6_selfEmployerRPF", "instrument": "Self + employer contribution to RPF", "cap": null },
-    { "sl": 7, "key": "7_superAnnuation", "instrument": "Superannuation", "cap": null },
-    { "sl": 8, "key": "8_benevolent", "instrument": "Benevolent fund", "cap": null },
-    { "sl": 9, "key": "9_zakat", "instrument": "Zakat", "cap": null },
-    { "sl": 10, "key": "10_others", "instrument": "Other qualifying investments", "cap": null }
+    { "sl": 1, "key": "1_lifeInsurance", "instrument": "Life insurance premium", "cap": null, "capNote": "10% of actual sum assured (paid in Bangladesh)" },
+    { "sl": 2, "key": "2_dps", "instrument": "Deposit Pension Scheme (DPS)", "cap": 120000, "capNote": "Tk 1,20,000 per year" },
+    { "sl": 3, "key": "3_govtSecuritiesSanchay", "instrument": "Govt securities / sanchayapatra / MF / ETF", "cap": 500000, "capNote": "Govt securities <= 5,00,000; new unit/MF/ETF investments uncapped since Finance Act 2026 (hold to maturity)" },
+    { "sl": 4, "key": "4_listedSecurities", "instrument": "Listed shares / mutual funds", "cap": null, "capNote": "no explicit cap (must be new investment; hold per rules)" },
+    { "sl": 5, "key": "5_pfAct1925", "instrument": "PF under PF Act 1925", "cap": null, "capNote": "no cap; PF must be recognized (Finance Act 2026)" },
+    { "sl": 6, "key": "6_selfEmployerRPF", "instrument": "Self + employer contribution to RPF", "cap": null, "capNote": "no cap — claim self + employer halves together" },
+    { "sl": 7, "key": "7_superAnnuation", "instrument": "Superannuation", "cap": null, "capNote": "no cap" },
+    { "sl": 8, "key": "8_benevolent", "instrument": "Benevolent fund", "cap": null, "capNote": "no cap (benevolent / group insurance)" },
+    { "sl": 9, "key": "9_zakat", "instrument": "Zakat", "cap": null, "capNote": "no cap" },
+    { "sl": 10, "key": "10_others", "instrument": "Other qualifying investments", "cap": null, "capNote": "verify eligibility against Sixth Schedule Part 3 yearly" }
   ],
   "misc": {
     "repairDeductionPct": 0.25,
