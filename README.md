@@ -6,6 +6,8 @@ An **agentic playbook** for pre-filling the Bangladesh NBR e-Return (etaxnbr.gov
 
 > **Not tax advice.** The guide teaches form mechanics; your figures, your responsibility. Nothing in this repo ever pays or submits — safety rails are built into the runbook.
 
+> **Tool-agnostic.** I used [opencode](https://opencode.ai), but this works with **any MCP-capable agent** — Claude Code, OpenAI Codex CLI, Command Code, Gemini CLI, Cursor, Amazon Q, Cline, Goose, Crush, Aider, and more. MCP (Model Context Protocol) is an open standard, so the Playwright MCP server and its tool names are **identical everywhere**; only the config file format differs — a cosmetic change. See runbook §1a.
+
 ## Why I built this
 
 Even as a high-tech professional, I realized I had low financial literacy when it came to managing my own taxes. **I wanted to change that.** I wanted to build true financial literacy, so I decided to tackle filing my own tax return on the portal myself.
@@ -33,7 +35,7 @@ This repo is a **template, not a finished tool**. The intended flow: fork it, sw
 - The safety allowlist model — agent may navigate/fill/save, never pay/submit/reset
 - The phased workflow: recon → fill → verify → human handoff
 - The **baseline + deltas** JSON pattern (last-year data + this-year patches)
-- `opencode.json` + Playwright MCP setup
+- `opencode.json` + Playwright MCP setup — MCP is an open standard, so the same server works in opencode, Claude Code, Codex, Gemini CLI, … (only the config file differs)
 - Run-report discipline: every unverified item must be listed, never silently skipped
 
 **Replace** (the portal-specific part):
@@ -54,7 +56,7 @@ Other portals, same pattern: another taxpayer's tax-lawyer agent, other NBR serv
 | [`Tax-Filing-Guide-Bangladesh.md`](Tax-Filing-Guide-Bangladesh.md) | Concepts guide: slabs, income heads, schedules, rebate, IT-10B/10BB, verification checklist |
 | [`NBR-eReturn-Agentic-Entry-Plan.md`](NBR-eReturn-Agentic-Entry-Plan.md) | The runbook: phases, live portal routes, fill order, verification gate, safety rails, starter prompt |
 | [`tax_optimize.md`](tax_optimize.md) | **Tax optimization guideline (experimental)**: Section-78 rebate math, AY 2026-27 slabs & instrument caps, researched with sources |
-| [`opencode.json`](opencode.json) | opencode config registering Playwright MCP |
+| [`opencode.json`](opencode.json) | opencode config registering Playwright MCP — other agents register the same server in their own config file (runbook §1a) |
 | [`tools/extract.py`](tools/extract.py) | **Documents → JSON**: drops your PDFs/Excel/images and converts them into staging JSON (see [basic guide](basic_guide.md)) |
 | [`tools/optimize.py`](tools/optimize.py) | **Tax Optimization Engine**: pre-fill report of rebate opportunities & slab position against current rules |
 | [`templates/field-map.md`](templates/field-map.md) | Redacted example of the Phase-3 recon map (real routes, no personal figures) |
@@ -82,6 +84,7 @@ After you fork:
    npx @playwright/mcp install-browser chrome-for-testing
    ```
    Restart opencode — browser tools should now be exposed.
+   *Using Claude Code, Codex, Gemini CLI or another MCP-capable agent? Register the same `@playwright/mcp` server in your tool's MCP config instead — same tools, cosmetic config diff (runbook §1a).*
 5. **Recon** (Phase 3): walk the wizard read-only, fill your `payload/field-map.md`.
 6. **Fill** (Phase 4): patch the draft vs your merged JSON, Save Draft per section.
 7. **Verify** (Phase 5) against Return View; hand off for payment + **Submit** (human only).

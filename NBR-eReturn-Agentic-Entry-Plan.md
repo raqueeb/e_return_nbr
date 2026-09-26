@@ -3,7 +3,7 @@
 ### [Rakibul Hassan](https://aiwithr.github.io/about/) with the help of OpenCode
 
 **Portal:** https://etaxnbr.gov.bd (+ `ledger.etaxnbr.gov.bd` via SSO)  
-**Tool:** Playwright MCP (in opencode)  
+**Tool:** Playwright MCP (any MCP-capable agent — opencode, Claude Code, Codex CLI, Gemini CLI, …)  
 **Strategy:** The portal keeps a **running draft**. Open it → compare each screen against **merged JSON** (LY baseline + AY deltas) → patch differences → **Save draft only**  
 **Human does:** login/OTP · balance payment + s.173 challan · final review · **Submit**
 
@@ -54,6 +54,20 @@ Concepts, slabs, and form help: see `Tax-Filing-Guide-Bangladesh.md`.
   npx @playwright/mcp install-browser chrome-for-testing
   ```
   ~200 MB one-time download; no restart needed after it completes.
+
+**Using a different agent?** MCP (Model Context Protocol) is an open standard — the server, the `npx` command above and every tool name are **identical in every MCP-capable tool** (Claude Code, OpenAI Codex CLI, Command Code, Gemini CLI, Cursor, Amazon Q Developer CLI, Cline, Roo Code, Goose, Crush, Amp, Aider, …). Only *where you register it* changes — a cosmetic config diff:
+
+| Agent | MCP config |
+|---|---|
+| opencode | `opencode.json` → `mcp` block (this repo) |
+| Claude Code | project `.mcp.json` or `claude mcp add …` (`mcpServers`) |
+| OpenAI Codex CLI | `~/.codex/config.toml` → `[mcp_servers.playwright]` |
+| Gemini CLI | `~/.gemini/mcp_settings.json` (`mcpServers`) |
+| Cursor / Cline / Roo Code | their MCP settings JSON (`mcpServers`) |
+| Amazon Q Developer CLI | `~/.aws/amazonq/mcp.json` |
+| Goose, Crush, Amp, Aider, … | each tool's own config file — same server command |
+
+Everything else here — phases, fill techniques (§4), safety rails (§0), starter prompt (§8) — is tool-agnostic; paste the prompt into whichever agent you use. The §0 safety rules are prompt-level, so they travel with you to any tool.
 
 ### 1b. First-run browser
 
@@ -238,7 +252,7 @@ for section in checklist:
     tick(section)
 ```
 
-If session dies: restart opencode/MCP → `browser_navigate` to portal → human re-login if needed → resume at first unticked section.
+If session dies: restart your agent/MCP → `browser_navigate` to portal → human re-login if needed → resume at first unticked section.
 
 ---
 
@@ -305,7 +319,7 @@ For each key below, compute `delta ?? baseline` and print `key = value`:
 
 ---
 
-## 8. Prompt to start (paste into opencode)
+## 8. Prompt to start (paste into your agent — opencode, Claude Code, …)
 
 ```
 Read NBR-eReturn-Agentic-Entry-Plan.md and execute from Phase 0.
@@ -328,7 +342,7 @@ Use only values from the merged JSON — do not invent amounts.
 <workspace>/
   README.md                              # quickstart (shareable)
   LICENSE                                # MIT (shareable)
-  opencode.json                          # Playwright MCP (shareable)
+  opencode.json                          # Playwright MCP for opencode (other agents: same MCP, §1a)
   basic_guide.md                         # zero-to-start guide, EN+BN (shareable)
   tax_optimize.md                        # tax optimization guideline, EN+BN, experimental (shareable)
   NBR-eReturn-Agentic-Entry-Plan.md      # this runbook (shareable)

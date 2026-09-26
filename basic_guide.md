@@ -62,6 +62,8 @@ Press Enter. Wait until it finishes.
 
 Make sure your folder contains opencode.json (it's inside the ZIP you downloaded). It must sit in the **same folder** you will start the agent from.
 
+> **Not using opencode?** Any MCP-capable agent works exactly the same — Claude Code, OpenAI Codex CLI, Command Code, Gemini CLI, Cursor, and more. MCP is an open standard, so the browser tools are identical everywhere; only the config file's format changes (a cosmetic difference — see runbook §1a).
+
 ### **Step 5 — Install the browser**
 
 In the same terminal, paste and Enter:
@@ -176,6 +178,8 @@ npm install \-g opencode-ai
 
 নিশ্চিত হয়ে নিন আপনার ফোল্ডারে opencode.json ফাইলটা আছে কি না (আপনার ডাউনলোড করা ZIP ফাইলের ভেতরেই এটা দেওয়া ছিল)। মনে রাখবেন, ঠিক এই ফোল্ডার থেকেই আমরা পরে এজেন্ট চালু করব।
 
+> **opencode ছাড়া অন্য কোনো টুল ব্যবহার করবেন?** Claude Code, OpenAI Codex CLI, Command Code, Gemini CLI, Cursor — সবকটিই ঠিক একরকমই কাজ করে। MCP একটা ওপেন স্ট্যান্ডার্ড, তাই ব্রাউজার কন্ট্রোলের টুলগুলো সব টুলে হুবহু একই। শুধু কনফিগ ফাইলটার ফরম্যাটটা একটু আলাদা — এর বেশি কিছু নয় (রানবুক §1a দেখুন)।
+
 ### **ধাপ ৫ — ব্রাউজার ইনস্টল দিন**
 
 একই টার্মিনাল উইন্ডোতে নিচের লেখাটা পেস্ট করুন আর Enter চাপুন:
@@ -231,7 +235,7 @@ opencode
 
 ## **৯. এরপর যা করবেন**
 
-১. [Tax-Filing-Guide-Bangladesh.md](Filing-Guide-Bangladesh.md) গাইডটা পড়ে নিন—ট্যাক্স ফর্মের কোন অংশে কী থাকে আর কীভাবে কাজ করে তা বোঝার জন্য।  
+১. [Tax-Filing-Guide-Bangladesh.md](Tax-Filing-Guide-Bangladesh.md) গাইডটা পড়ে নিন—ট্যাক্স ফর্মের কোন অংশে কী থাকে আর কীভাবে কাজ করে তা বোঝার জন্য।  
 ২. [NBR-eReturn-Agentic-Entry-Plan.md](NBR-eReturn-Agentic-Entry-Plan.md) ফাইলটা দেখুন—এজেন্ট মূলত কীভাবে ভেতরে ভেতরে কাজ প্রসেস করে তা জানতে।  
 ৩. ধাপ ৫-এর এক্সট্র্যাক্টর কমান্ডটা চালান, payload/staging/inventory.md দেখে নিন, তারপর templates/ দেখে আপনার দুটো ডাটা ফাইল তৈরি করুন।  
 [⬅ Back to README](README.md)  
