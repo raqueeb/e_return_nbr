@@ -1,118 +1,109 @@
 ![NBR e-Return](images/nbr.png)
 
-# e-Return NBR — Agentic Filling Strategy (Bangladesh)
+🇧🇩 **[বাংলা সংস্করণের জন্য এখানে ক্লিক করুন (Read in Bangla)](README_bn.md)**
 
-An **agentic playbook** for pre-filling the Bangladesh NBR e-Return (etaxnbr.gov.bd) using [opencode](https://opencode.ai) (but anything will work) + Playwright MCP: an AI agent walks the return wizard, patches your draft against your own data files, and **stops at Save draft** — you review, pay, and submit yourself. This started as a fun Facebook [post](https://www.facebook.com/share/p/1JNZ6wwUno/), but became a reality now.
+# e-Return NBR — Your AI Tax Filing Assistant (Bangladesh)
 
-> **Not tax advice.** The guide teaches form mechanics; your figures, your responsibility. Nothing in this repo ever pays or submits — safety rails are built into the runbook.
+This is an **AI-powered guide** to help you fill out your Bangladesh NBR e-Return (etaxnbr.gov.bd). Think of it as having a smart, digital assistant that reads your tax documents, carefully types the numbers into the government website for you, and **stops right before saving**. You are always in control—you review everything, pay, and click the final submit button yourself. 
 
-> **Tool-agnostic.** I used [opencode](https://opencode.ai), but this works with **any MCP-capable agent** — Claude Code, OpenAI Codex CLI, Command Code, Gemini CLI, Cursor, Amazon Q, Cline, Goose, Crush, Aider, and more. MCP (Model Context Protocol) is an open standard, so the Playwright MCP server and its tool names are **identical everywhere**; only the config file format differs — a cosmetic change. See runbook §1a.
+What started as a fun Facebook [post](https://www.facebook.com/share/p/1JNZ6wwUno/) has now become a real, working tool to save you time and headache.
 
-## Why I built this
+> **Disclaimer: This is not professional tax advice.** This guide helps you navigate the website's mechanics. The numbers you enter are your responsibility. Our built-in safety rules ensure the AI can never pay or submit the form for you.
 
-Even as a high-tech professional, I realized I had low financial literacy when it came to managing my own taxes. **I wanted to change that.** I wanted to build true financial literacy, so I decided to tackle filing my own tax return on the portal myself.
+> **Use any AI you like.** While I used [opencode](https://opencode.ai), this method works perfectly with any modern AI agent (like Claude Code, Gemini CLI, Cursor, etc.). It uses a standard bridge called "MCP" that simply allows the AI to control a web browser.
 
-As I started working through the form, I struggled to wrap my head around the underlying logic—why certain figures needed to go in specific fields, or how the portal’s internal rules were structured. On top of that, navigating the input process itself proved quite challenging.
+---
 
-That is when I realized **I could use an AI agent to help guide me through the mechanics of the process.**
+## Why I Built This
 
-It took me **nearly 1 month of part-time work—nights and weekends, between my job and family**—to figure out how to bridge these gaps. Having spent years in the AI industry and authoring [**11 books on AI in Bangla**](https://aiwithr.github.io/resources/) to help everyday people use AI in daily life, this project naturally grew out of that same mission.
+Even as a high-tech professional, I realized I had very little financial literacy when it came to managing my own taxes. **I wanted to change that.** I wanted to build true financial confidence, so I decided to tackle filing my own tax return on the online portal myself.
 
-> **It is my gift to the community.** You shouldn't have to spend a month trying to decipher the process — take what I built and save your time.
+As I started working through the form, I struggled to wrap my head around the underlying logic—why certain figures needed to go in specific boxes, and how the portal’s internal rules were actually set up. On top of that, navigating the website and typing everything in was confusing and frustrating.
 
-## What this really is
+That is when the lightbulb went off: **I could use an AI agent to guide me through the mechanics of this whole process.**
 
-Not a tax product — a **working pattern for building agents that operate government/service web portals**: how to recon a form wizard safely, keep state in JSON, verify against a read-only view, and hard-stop before irreversible actions.
+It took me **nearly a whole month of part-time work**—late nights and weekends, juggling my day job and family time—to figure out how to make this work safely. Having spent years in the AI industry and writing [**11 books on AI in Bangla**](https://aiwithr.github.io/resources/) to help everyday people use AI in their daily lives, building this tool felt like a natural next step.
 
-Concretely, it's a **tax-lawyer-agent starter** — and a blueprint for adapting the same approach to any other portal with a form wizard.
+> **This is my gift to the community.** You shouldn't have to spend a month trying to decipher this system. Take what I have built, skip the headache, and save your valuable time.
 
-## Fork it & make it yours
+---
 
-This repo is a **template, not a finished tool**. The intended flow: fork it, swap the portal-specific parts for yours, keep the hard-won safety model.
+## Making Sense of the Tech (What this really is)
 
-**Keep** (the transferable part):
+This isn't a magical software you buy; it is a **blueprint** for using AI to safely interact with government websites. Here is the simple breakdown of how it works:
 
-- The safety allowlist model — agent may navigate/fill/save, never pay/submit/reset
-- The phased workflow: recon → fill → verify → human handoff
-- The **baseline + deltas** JSON pattern (last-year data + this-year patches)
-- `opencode.json` + Playwright MCP setup — MCP is an open standard, so the same server works in opencode, Claude Code, Codex, Gemini CLI, … (only the config file differs)
-- Run-report discipline: every unverified item must be listed, never silently skipped
+1. **The Brain (AI Agent):** You give it instructions.
+2. **The Hands (Playwright MCP):** A tool that lets the AI "click" and "type" on a web browser.
+3. **The Memory (JSON Files):** Simple text files where you keep your numbers (like last year's data and this year's income) so the AI knows exactly what to type.
 
-**Replace** (the portal-specific part):
+It is basically a starter kit for building your own personal "digital tax lawyer." And once you learn how it works here, you can use the same trick for passport portals, utility bills, or any online form.
 
-- `templates/baseline.example.json` / `templates/deltas.example.json` → your form's fields, your keys
-- `templates/field-map.md` → your portal's routes and sections (fill it during your own recon)
-- The domain allowlist (`etaxnbr.gov.bd`, `ledger.etaxnbr.gov.bd`) → your portal's domains
-- The starter prompt (§8 of the runbook) → your task description
+---
 
-**Five steps:** fork → read the guide + runbook → build your two JSON files from *your* documents → recon your portal read-only → fill, verify, and hand off to a human for the irreversible parts.
+## How to Make It Yours (Forking)
 
-Other portals, same pattern: another taxpayer's tax-lawyer agent, other NBR services, passports, land records, utilities — anything that's a form wizard behind a login.
+This repository (repo) is a template. The idea is to copy it (which is called "forking"), customize it with your own numbers, and use the safety rules I have already set up.
 
-## What's inside
+**What you keep from me:**
+- The strict safety rules (the AI can navigate and fill, but never submit).
+- The step-by-step workflow.
+- The setup files that connect the AI to your browser.
 
-| File | What it is |
+**What you change for yourself:**
+- The simple data files where you put your actual income numbers.
+- Your personal login details (which you type yourself).
+
+---
+
+## What's Inside the Box?
+
+| File | What it means for you |
 |---|---|
-| [`Tax-Filing-Guide-Bangladesh.md`](Tax-Filing-Guide-Bangladesh.md) | Concepts guide: slabs, income heads, schedules, rebate, IT-10B/10BB, verification checklist |
-| [`NBR-eReturn-Agentic-Entry-Plan.md`](NBR-eReturn-Agentic-Entry-Plan.md) | The runbook: phases, live portal routes, fill order, verification gate, safety rails, starter prompt |
-| [`tax_optimize.md`](tax_optimize.md) | **Tax optimization guideline (experimental)**: Section-78 rebate math, AY 2026-27 slabs & instrument caps, researched with sources |
-| [`opencode.json`](opencode.json) | opencode config registering Playwright MCP — other agents register the same server in their own config file (runbook §1a) |
-| [`tools/extract.py`](tools/extract.py) | **Documents → JSON**: drops your PDFs/Excel/images and converts them into staging JSON (see [basic guide](basic_guide.md)) |
-| [`tools/optimize.py`](tools/optimize.py) | **Tax Optimization Engine**: pre-fill report of rebate opportunities & slab position against current rules |
-| [`templates/field-map.md`](templates/field-map.md) | Redacted example of the Phase-3 recon map (real routes, no personal figures) |
-| [`templates/baseline.example.json`](templates/baseline.example.json) | Schema for the last-year baseline data file |
-| [`templates/deltas.example.json`](templates/deltas.example.json) | Schema for current-year corrections/patches |
+| [`Tax-Filing-Guide-Bangladesh.md`](Tax-Filing-Guide-Bangladesh.md) | The human guide: explains how Bangladesh tax math actually works. |
+| [`NBR-eReturn-Agentic-Entry-Plan.md`](NBR-eReturn-Agentic-Entry-Plan.md) | The robot guide: step-by-step instructions the AI follows to fill the form. |
+| [`tax_optimize.md`](tax_optimize.md) | Tips on how to legally save on taxes (rebates, investment caps). |
+| [`opencode.json`](opencode.json) | The settings file that connects the AI to your web browser. |
+| [`tools/extract.py`](tools/extract.py) | A magic script that reads your PDF documents and turns them into text files so you don't have to type numbers by hand. |
+| [`templates/baseline.example.json`](templates/baseline.example.json) | A blank template to put last year's tax numbers. |
+| [`templates/deltas.example.json`](templates/deltas.example.json) | A blank template to put this year's new tax numbers. |
 
-## Quickstart
+---
 
-**New to AI?** Start with the [basic guide](basic_guide.md) first — it starts from zero.
+## Quickstart (Let's Get Started!)
 
-After you fork:
+**Are you completely new to AI?** Stop here and read the **[Basic Guide (Start from Zero)](basic_guide.md)** first. It is written for absolute beginners.
 
-1. **Read** the [guide](Tax-Filing-Guide-Bangladesh.md) (concepts) then the [runbook](NBR-eReturn-Agentic-Entry-Plan.md) (execution).
-2. **Build your two data files** from *your* last-year filed PDF and *your* current-year documents — don't type them by hand: run the extractor on your documents folder and start from its output:
-   ```
+If you are ready, here is the flow after you copy (fork) this project:
+
+1. **Read up:** Skim the tax guide and the agent runbook so you know the plan.
+2. **Prepare your data:** Don't type numbers by hand! Put your tax PDFs in a folder and run our helper tool:
+   ```bash
    python tools/extract.py --docs /path/to/your-documents --out payload/staging
    ```
-   Review `payload/staging/inventory.md`, map what you can with `tools/mapping.json`, then finalize the JSONs from the templates.
-3. **Optimize**: run the Tax Optimization Engine for a pre-fill opportunity report (slab position, rebate-cap verdict, Schedule-5 headroom) — the why behind the numbers is in [tax_optimize.md](tax_optimize.md) (experimental):
-   ```
-   python tools/optimize.py --baseline payload/ereturn-2025-26.json --deltas payload/deltas-2026-27.json
-   ```
-4. **Configure**: copy `opencode.json` into your workspace, then
-   ```
-   npx @playwright/mcp install-browser chrome-for-testing
-   ```
-   Restart opencode — browser tools should now be exposed.
-   *Using Claude Code, Codex, Gemini CLI or another MCP-capable agent? Register the same `@playwright/mcp` server in your tool's MCP config instead — same tools, cosmetic config diff (runbook §1a).*
-5. **Recon** (Phase 3): walk the wizard read-only, fill your `payload/field-map.md`.
-6. **Fill** (Phase 4): patch the draft vs your merged JSON, Save Draft per section.
-7. **Verify** (Phase 5) against Return View; hand off for payment + **Submit** (human only).
+   This reads your files and helps you fill out your `baseline` and `deltas` JSON templates.
+3. **Optimize:** Run our optimization tool to see if you can save money on your taxes this year.
+4. **Connect the browser:** Run the setup command (`npx @playwright/mcp install-browser chrome-for-testing`) so the AI has a browser to work with.
+5. **Recon & Fill:** Ask the AI to log in. You type your password. Then, sit back and watch as the AI navigates the portal, fills in the boxes based on your files, and safely clicks **Save Draft**.
+6. **You take the wheel:** Review the draft, pay any taxes owed, and hit **Submit** yourself.
 
-Paste-ready starter prompt: see §8 of the runbook.
+---
 
-## Safety model (summary)
+## Our Promise on Safety
 
-- Agent may click: navigate, fill, **Save Draft**.
-- Agent may **never** click: `Pay Now`, `Submit Return`, `Proceed to online return`, `Reset Calculation`, or delete/replace existing ledger claims.
-- Password / OTP / PIN are always typed by the human, never stored.
-- Domains allowlisted: `etaxnbr.gov.bd`, `ledger.etaxnbr.gov.bd` (the ledger opens automatically from the return for tax-payment claims).
+- **The AI is allowed to:** click around, navigate pages, type your numbers, and click **Save Draft**.
+- **The AI will NEVER:** click `Pay Now`, click `Submit Return`, or reset your calculations. 
+- Your passwords and OTP pins are **always typed by you**. The AI never sees them or stores them.
 
-## Private files (never commit)
+## A Note on Privacy
 
-Your real numbers live **outside** this repo pattern:
+Your real tax numbers are completely private. We have set up the system (using `.gitignore`) so your personal files, passwords, and screenshots are never accidentally uploaded to the internet. 
 
-```
-payload/ereturn-2025-26.json   # your last-year baseline
-payload/deltas-2026-27.json    # your current-year patches
-payload/field-map.md           # your filled recon map
-screenshots/, run-report.md    # session outputs
-```
-
-`.gitignore` excludes them by default.
+---
 
 ## Credits
 
-Built by [Rakibul Hassan](https://aiwithr.github.io/about/) · [11 AI books in Bangla](https://aiwithr.github.io/resources/) · Portal verified live Sep 2026 — re-verify, portals change.
+Built by [Rakibul Hassan](https://aiwithr.github.io/about/) in my spare time. I have written [11 books on AI in Bangla](https://aiwithr.github.io/resources/) and I believe technology should make our lives easier, not harder. 
 
-Star it, fork it, PR improvements back. [MIT](LICENSE)
+If this saves you a stressful weekend, please star the project, share it with friends, and enjoy your free time! 
+
+[MIT License](LICENSE)
