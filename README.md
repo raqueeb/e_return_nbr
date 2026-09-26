@@ -55,6 +55,7 @@ Other portals, same pattern: another taxpayer's tax-lawyer agent, other NBR serv
 | [`NBR-eReturn-Agentic-Entry-Plan.md`](NBR-eReturn-Agentic-Entry-Plan.md) | The runbook: phases, live portal routes, fill order, verification gate, safety rails, starter prompt |
 | [`opencode.json`](opencode.json) | opencode config registering Playwright MCP |
 | [`tools/extract.py`](tools/extract.py) | **Documents → JSON**: drops your PDFs/Excel/images and converts them into staging JSON (see [basic guide](basic_guide.md)) |
+| [`tools/optimize.py`](tools/optimize.py) | **Tax Optimization Engine**: pre-fill report of rebate opportunities & slab position against current rules |
 | [`templates/field-map.md`](templates/field-map.md) | Redacted example of the Phase-3 recon map (real routes, no personal figures) |
 | [`templates/baseline.example.json`](templates/baseline.example.json) | Schema for the last-year baseline data file |
 | [`templates/deltas.example.json`](templates/deltas.example.json) | Schema for current-year corrections/patches |
@@ -71,14 +72,18 @@ After you fork:
    python tools/extract.py --docs /path/to/your-documents --out payload/staging
    ```
    Review `payload/staging/inventory.md`, map what you can with `tools/mapping.json`, then finalize the JSONs from the templates.
-3. **Configure**: copy `opencode.json` into your workspace, then
+3. **Optimize**: run the Tax Optimization Engine for a pre-fill opportunity report (slab position, rebate-cap verdict, Schedule-5 headroom):
+   ```
+   python tools/optimize.py --baseline payload/ereturn-2025-26.json --deltas payload/deltas-2026-27.json
+   ```
+4. **Configure**: copy `opencode.json` into your workspace, then
    ```
    npx @playwright/mcp install-browser chrome-for-testing
    ```
    Restart opencode — browser tools should now be exposed.
-4. **Recon** (Phase 3): walk the wizard read-only, fill your `payload/field-map.md`.
-5. **Fill** (Phase 4): patch the draft vs your merged JSON, Save Draft per section.
-6. **Verify** (Phase 5) against Return View; hand off for payment + **Submit** (human only).
+5. **Recon** (Phase 3): walk the wizard read-only, fill your `payload/field-map.md`.
+6. **Fill** (Phase 4): patch the draft vs your merged JSON, Save Draft per section.
+7. **Verify** (Phase 5) against Return View; hand off for payment + **Submit** (human only).
 
 Paste-ready starter prompt: see §8 of the runbook.
 

@@ -367,6 +367,8 @@ Expenses should be defensible with bills; lifestyle far below income raises ques
 
 ## 12. Tax-saving playbook (legal levers)
 
+*Agent helper: `python tools/optimize.py` (runbook Phase 2a) generates this analysis — slab position, rebate-cap verdict, Schedule-5 headroom — for your own numbers, in English + Bangla.*
+
 ### A. Schedule 5 investments (direct rebate — effective R% back, capped at 3% of income)
 
 Priority order (typical):

@@ -104,12 +104,35 @@ Review the staging output, then assemble `payload/` baseline + deltas from §1c.
 | 0 | Preflight + login | MCP tools work; human logged in |
 | 1 | Baseline JSON sanity | Spot-check LY totals vs PDF |
 | 2 | Delta JSON sanity | Diff table printed |
+| 2a | Tax optimization | Human has seen `optimization-report.md` |
 | 3 | Recon map | `field-map.md` covers all keys (or unmapped listed) |
 | 4 | Prefill + patch + save | Section checklist 100% |
 | 5 | Verify totals | §6 invariants all pass or explicit mismatch report |
 | 6 | Stop + handoff | `run-report.md` written; draft saved |
 
-**Do not start Phase 4 until Phase 3 map exists.**
+**Do not start Phase 4 until Phase 3 map exists. Do not fill before the Phase 2a report has been shown to the human.**
+
+---
+
+## 2a. Phase 2a — Tax Optimization Engine (before fill)
+
+An offline rules engine analyzes the merged data against current slabs and surfaces overlooked opportunities **before any portal editing starts**:
+
+```
+python tools/optimize.py --baseline payload/ereturn-2025-26.json --deltas payload/deltas-2026-27.json
+```
+
+Output: `payload/optimization-report.md` (bilingual EN + বাংলা). The agent must **show the report to the human and wait** — suggestions may change the deltas.
+
+What it computes (rules live in `tools/tax-rules.example.json`, edit yearly):
+
+1. **Slab position** — marginal rate + recomputed slab tax vs line 12 (sanity check)
+2. **Rebate verdict** — breakeven `(3% × income) / R%`; if the 3% cap binds, extra Schedule-5 investment saves **Tk 0** and the report says so
+3. **Schedule-5 headroom** — per-serial claimed vs cap (caps ship as `null` → "verify yearly", never invented) + RPF both-halves check
+4. **Beyond Sch-5 checks** — unclaimed exempt/pension line 26, Sch-2 repair deduction, minimum-tax floor, advance-tax incentive
+5. **Honesty rails** — math only, not investment advice; document every claim; investments count before 30 June
+
+**Gate:** human acknowledges the report → may patch deltas with accepted suggestions → Phase 3.
 
 ---
 
@@ -288,6 +311,7 @@ Use Playwright MCP tools only on etaxnbr.gov.bd and ledger.etaxbr.gov.bd.
 Baseline: payload/ereturn-2025-26.json
 Deltas:   payload/deltas-2026-27.json
 Walk the wizard (§3 routes), patch the draft vs merged JSON, Save draft per section.
+Run tools/optimize.py (Phase 2a), show me optimization-report.md, and wait for my OK before filling.
 Verify ledger claims (§4a) — verify only, never delete/re-add.
 Stop at Save as draft + run-report.md. Never submit, pay, or reset calculations.
 Pause for me at login and if any verification check fails.
@@ -308,6 +332,8 @@ Use only values from the merged JSON — do not invent amounts.
   Tax-Filing-Guide-Bangladesh.md         # concepts (shareable)
   tools/
     extract.py                           # documents → staging JSON (shareable)
+    optimize.py                          # Phase 2a tax optimization report (shareable)
+    tax-rules.example.json               # slabs + rebate rules, edit yearly (shareable)
     classify.py                          # file-type fingerprints (shareable)
     parsers/ereturn.py                   # e-Return PDF → baseline keys (shareable)
     mapping.example.json                 # example source→key rules (shareable)

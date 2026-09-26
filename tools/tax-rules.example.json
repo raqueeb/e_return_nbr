@@ -1,0 +1,35 @@
+{
+  "assessmentYear": "2026-2027",
+  "source": "Verify every value against the Finance Act and NBR portal each year. Slabs + rebate formula verified from a filed AY 2026-27 computation; per-instrument caps are intentionally null until you verify them.",
+  "slabs": [
+    { "up_to": 400000, "rate": 0.0, "label": "0 - 4,00,000" },
+    { "up_to": 700000, "rate": 0.10, "label": "4,00,001 - 7,00,000" },
+    { "up_to": 1100000, "rate": 0.15, "label": "7,00,001 - 11,00,000" },
+    { "up_to": 1600000, "rate": 0.20, "label": "11,00,001 - 16,00,000" },
+    { "up_to": 3600000, "rate": 0.25, "label": "16,00,001 - 36,00,000" },
+    { "up_to": null, "rate": 0.30, "label": "above 36,00,000" }
+  ],
+  "rebate": {
+    "R": 0.10,
+    "R_note": "R was 15% in IY 2024-25 filings and computed as 10% on the AY 2026-27 portal — confirm on the portal and edit here.",
+    "incomeCapPct": 0.03,
+    "absoluteCap": 1000000
+  },
+  "minimumTax": 5000,
+  "schedule5": [
+    { "sl": 1, "key": "1_lifeInsurance", "instrument": "Life insurance premium", "cap": null },
+    { "sl": 2, "key": "2_dps", "instrument": "Deposit Pension Scheme (DPS)", "cap": null },
+    { "sl": 3, "key": "3_govtSecuritiesSanchay", "instrument": "Govt securities / sanchayapatra / MF / ETF", "cap": null },
+    { "sl": 4, "key": "4_listedSecurities", "instrument": "Listed shares / mutual funds", "cap": null },
+    { "sl": 5, "key": "5_pfAct1925", "instrument": "PF under PF Act 1925", "cap": null },
+    { "sl": 6, "key": "6_selfEmployerRPF", "instrument": "Self + employer contribution to RPF", "cap": null },
+    { "sl": 7, "key": "7_superAnnuation", "instrument": "Superannuation", "cap": null },
+    { "sl": 8, "key": "8_benevolent", "instrument": "Benevolent fund", "cap": null },
+    { "sl": 9, "key": "9_zakat", "instrument": "Zakat", "cap": null },
+    { "sl": 10, "key": "10_others", "instrument": "Other qualifying investments", "cap": null }
+  ],
+  "misc": {
+    "repairDeductionPct": 0.25,
+    "repairDeductionNote": "Guide value for Schedule 2 repair & collection — admissible % may differ; verify with receipts."
+  }
+}
